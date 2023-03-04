@@ -1,10 +1,11 @@
 package com.driver.controllers;
+
+import com.driver.model.User;
 import com.driver.services.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -17,7 +18,6 @@ public class UserController {
         User user = userService.register(username, password, countryName);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
     @PutMapping("/subscribe")
     public void subscribe(@RequestParam Integer userId, @RequestParam Integer serviceProviderId){
         //subscribe to the serviceProvider by adding it to the list of providers and return updated User
